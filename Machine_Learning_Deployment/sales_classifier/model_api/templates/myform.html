@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sales Predictor</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.1/css/bootstrap.min.css" integrity="sha384-VCmXjywReHh4PwowAiWNagnWcLhlEJLA5buUprzK8rxFgeH0kww/aWY76TfkUoSX" crossorigin="anonymous">
+</head>
+<body>
+    {% load crispy_forms_tags %}
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <a class="navbar-brand" href="/">SALES-PREDICTOR</a>
+    </nav>    
+    <!-- <div class="col">
+        <div class="mt-5">
+            <h4>
+
+        {% if messages %}
+        <ul class="messages">
+        {% for message in messages %}
+        <li {% if message.tags %} class=" {{ message.tags}}" {% endif %}> 
+            {{ message }} </li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+            </h4>
+
+    </div>
+
+    </div> -->
+    <h4>
+    {% if messages %}
+    <div class="alert alert-success" role="alert">
+        <ul class="messages">
+            {% for message in messages %}
+            <li {% if message.tags %} class=" {{ message.tags}}" {% endif %}> 
+                {{ message }} </li>
+                {% endfor %}
+            </ul>
+    </div>
+    {% endif %}
+</h4>
+
+
+
+
+
+    <div class="container">
+        <div class="p-4 m-4">
+            <div class="col-lg-5 mx-auto">
+    
+                <h3 class="alert alert-light border rounded">Enter Lead Datails : </h3>
+    <form method="post">
+        {% csrf_token %}
+        {{form|crispy}}
+        <br>
+        <button class="btn  btn-info" type="submit">Predict</button>
+
+    </form>
+
+            </div>
+
+        </div>
+    </div>
+
+</body>
+</html>
